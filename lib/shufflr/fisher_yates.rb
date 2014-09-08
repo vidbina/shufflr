@@ -2,7 +2,8 @@ module Shufflr
   module FisherYates
     # Performs the Fisher-Yates shuffle
     def self.shuffle(arr=[], shuffle_from=0)
-      shuffle_loopwise(arr, shuffle_from)
+      self.send(:shuffle_using_enumerable, arr, shuffle_from)
+      #shuffle_(arr, shuffle_from)
     end
 
     # Performs the shuffle in an imperative style using the almighty looping
@@ -10,7 +11,7 @@ module Shufflr
     def self.shuffle_loopwise(arr=[], shuffle_from=0)
       for i in shuffle_from..(arr.count-1)
         j = (i..arr.count-1).to_a.sample
-        exchange(arr, i, j)
+        Helper.exchange(arr, i, j)
       end
       arr
     end
@@ -18,15 +19,8 @@ module Shufflr
     # Performs the shuffle using an +Enumerable+
     def self.shuffle_using_enumerable(arr=[], shuffle_from=0)
       (0..arr.count-2).inject(arr) do |memo, i|
-        exchange(memo, i, (i..memo.count-1).to_a.sample)
+        Helper.exchange(memo, i, (i..memo.count-1).to_a.sample)
       end
-    end
-
-    # Exchanges two values the specified indexes within an array
-    def self.exchange(arr=[], a, b)
-      return arr unless arr.count > a && arr.count > b
-      arr[a], arr[b] = arr[b], arr[a]
-      arr
     end
 
     # Performs the shuffle in an functional style using recursion
@@ -35,7 +29,7 @@ module Shufflr
       # limitation but is a simple demonstration of the recursive approach
       return arr if i+1 == arr.count
       j = (i..arr.count-1).to_a.sample
-      shuffle_recursively(exchange(arr, i, j), i+1)
+      shuffle_recursively(Helper.exchange(arr, i, j), i+1)
     end
   end 
 end
