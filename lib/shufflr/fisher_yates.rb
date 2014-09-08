@@ -15,10 +15,11 @@ module Shufflr
       arr
     end
 
+    # Performs the shuffle using an +Enumerable+
     def self.shuffle_using_enumerable(arr=[], shuffle_from=0)
-      #(0..arr.count-1).inject(arr) do |memo, i|
-        #p memo
-      #end
+      (0..arr.count-2).inject(arr) do |memo, i|
+        exchange(memo, i, (i..memo.count-1).to_a.sample)
+      end
     end
 
     # Exchanges two values the specified indexes within an array

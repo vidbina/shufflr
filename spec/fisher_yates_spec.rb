@@ -25,6 +25,16 @@ describe Shufflr::FisherYates do
     end
   end
 
+  describe 'executed in enumerable' do
+    before do
+      @shuffled_set = Shufflr::FisherYates.shuffle_using_enumerable(@unshuffled_set)
+    end
+
+    it 'contains every value in the original set' do
+      @shuffled_set.each { |item| assert_includes @shuffled_set, item }
+    end
+  end
+
   it 'swaps two array items' do
     assert_equal Shufflr::FisherYates.exchange([1, 2, 3], 0, 1), [2, 1, 3]
     assert_equal Shufflr::FisherYates.exchange([1, 2, 3], 1, 2), [1, 3, 2]
