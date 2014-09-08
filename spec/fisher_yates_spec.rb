@@ -11,17 +11,17 @@ describe Shufflr::FisherYates do
   # DRY this up
   describe 'executed loop-wise' do
     before do
-      @shuffled_set = Shufflr::FisherYates.shuffle_loopwise(@unshuffled_set)
+      @shuffled_set = Shufflr::FisherYates.shuffle(@unshuffled_set)
     end
 
     it 'contains every value in the original set' do
       @shuffled_set.each { |item| assert_includes @shuffled_set, item }
     end
   end
-
-  describe 'executed recursively' do
+  
+  describe 'executed loop-wise' do
     before do
-      @shuffled_set = Shufflr::FisherYates.shuffle_recursively(@unshuffled_set)
+      @shuffled_set = Shufflr::FisherYates.shuffle_loopwise(@unshuffled_set)
     end
 
     it 'contains every value in the original set' do
