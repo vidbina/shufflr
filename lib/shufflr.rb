@@ -1,5 +1,5 @@
 require "shufflr/version"
 
 module Shufflr
-  # Your code goes here...
+  require "shufflr/fisher_yates"
 end
