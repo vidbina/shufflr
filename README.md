@@ -1,6 +1,11 @@
 # Shufflr
+Ruby already offers a ```#shuffle``` method on ```Array```-type objects, but
+a situation may present itself once where one may need to exercise more 
+granular control on the way the shuffle is performed or which type of shuffle
+is performed.
 
-TODO: Write a gem description
+For now this is just my take on a small assessment, that kinda got out of hand
+when I started benchmarking and goofing around :wink:.
 
 ## Installation
 
@@ -18,7 +23,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Use the shuffler of choice by calling #shuffle.
+
+    require 'shufflr'
+
+    Shufflr::FisherYates.shuffle [1, 2, 3, 4, 5]
 
 ## Contributing
 
