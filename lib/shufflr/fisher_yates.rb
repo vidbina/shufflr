@@ -15,6 +15,12 @@ module Shufflr
       arr
     end
 
+    def self.shuffle_using_enumerable(arr=[], shuffle_from=0)
+      #(0..arr.count-1).inject(arr) do |memo, i|
+        #p memo
+      #end
+    end
+
     # Exchanges two values the specified indexes within an array
     def self.exchange(arr=[], a, b)
       return arr unless arr.count > a && arr.count > b
